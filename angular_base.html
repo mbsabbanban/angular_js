@@ -12,10 +12,16 @@
 	<body ng-controller="StoreController as store">
 	  <!--div ng-hide="store.product.soldOut"-->
 	  <div ng-repeat="product in store.products">
+		<section>
+			<ul class="nav nav-pills">
+				<li><a href>Description</a> </li>
+				<li><a href>Specifications</a> </li>
+				<li><a href>Reviews</a> </li>
+			</ul>
+		</section>
 	    <h1>{{product.name}}</h1>
 	    <h2>{{product.price | currency }}</h2>
-		<img ng-src="{{product.images.full[0]}}">
-		<!--img src="img/sunflower.jpg"-->
+		<img ng-show="product.images.length > 0" ng-src="{{product.images[0].full}}"/>
 	    <button ng-show="product.canPurchase">Add to Cart</button>
 	  </div>
 	</body>
