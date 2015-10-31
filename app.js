@@ -14,7 +14,10 @@
 	  canPurchase: true,
 	  soldOut: false,
 	  images: [
-	  full: "img/ramen.jpg"
+		{
+	  //full: "img/ramen.jpg"
+	  full: "Happy Ramen Image"
+		}
 	  ]
 	},
 	
@@ -25,7 +28,10 @@
 	  canPurchase: true,
 	  soldOut: false,
 	  images: [
-	  full: "img/sunflower.jpg"
+		{
+	  //full: "img/sunflower.jpg"
+	  full: "Happy Sunflower Image"
+		}
 	  ]
 	  
 	}
