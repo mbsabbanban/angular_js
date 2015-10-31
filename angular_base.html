@@ -5,24 +5,56 @@
 	  
 	  <title>AngularJS</title>
 	  <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
-	  	  <script type="text/javascript" src="angular.min.js"></script>
+	  <script type="text/javascript" src="angular.min.js"></script>
 	  <script type="text/javascript" src="app.js"></script>
 	</head>
 	
 	<body ng-controller="StoreController as store">
 	  <!--div ng-hide="store.product.soldOut"-->
 	  <div ng-repeat="product in store.products">
-		<section>
-			<ul class="nav nav-pills">
-				<li><a href>Description</a> </li>
-				<li><a href>Specifications</a> </li>
-				<li><a href>Reviews</a> </li>
-			</ul>
-		</section>
 	    <h1>{{product.name}}</h1>
 	    <h2>{{product.price | currency }}</h2>
 		<img ng-show="product.images.length > 0" ng-src="{{product.images[0].full}}"/>
+		
+		<!--Added a section for the Panels at the bottom-->
+		
+		<section ng-controller="PanelController as panel">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active: panel.isSelected(1)}">
+					<a href ng-click="panel.selectTab(1)">Description</a>
+				</li>
+				
+				<li ng-class="{ active: panel.isSelected(2)}">
+					<a href ng-click="panel.selectTab(2)">Specifications</a> 
+				</li>
+				
+				<li ng-class="{ active: panel.isSelected(3)}">
+					<a href ng-click="panel.selectTab(3)">Reviews</a> 
+				</li>
+			</ul>
+			
+			<!-- Adding the div panels for the tabs above-->
+			<div class="panel" ng-show="panel.isSelected(1)">
+				<h4>Description</h4>
+				<p>{{product.description}}</p>
+			</div>
+			
+			<div class="panel" ng-show="panel.isSelected(2)">
+				<h4>Specifications</h4>
+				<blockquote>None yet</blockquote>
+			</div>
+			
+			<div class="panel" ng-show="panel.isSelected(3)">
+				<h4>Reviews</h4>
+				<blockquote>None yet</blockquote>
+			</div>
+			
+		</section>
+		
 	    <button ng-show="product.canPurchase">Add to Cart</button>
+		
+		
+		
 	  </div>
 	</body>
 </html>
